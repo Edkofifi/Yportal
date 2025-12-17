@@ -21,9 +21,11 @@ public class BranchChurch {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false, length = 100)
     private String name;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
     private BranchType type;
 
     private int totalMembership;
