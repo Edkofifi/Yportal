@@ -12,24 +12,24 @@ import java.util.UUID;
 @RequestMapping("/api/branches")
 public class BranchChurchController {
 
-    private final BranchChurchService service;
-
-    public BranchChurchController(BranchChurchService service) {
-        this.service = service;
-    }
-
-    @PostMapping
-    public BranchResponse create(@RequestBody CreateBranchRequest request) {
-        return service.create(request);
-    }
-
-    @GetMapping
-    public List<BranchResponse> getAll() {
-        return service.getAll();
-    }
-
-    @GetMapping("/{id}")
-    public BranchResponse getById(@PathVariable UUID id) {
-        return service.getById(id);
-    }
+//    private final BranchChurchService service;
+//
+//    public BranchChurchController(BranchChurchService service) {
+//        this.service = service;
+//    }
+//
+//    @PostMapping
+//    public BranchResponse create(@RequestBody CreateBranchRequest request) {
+//        return service.create(request);
+//    }
+//
+//    @GetMapping
+//    public List<BranchResponse> getAll() {
+//        return service.getAll();
+//    }
+//
+//    @GetMapping("/{id}")
+//    public BranchResponse getById(@PathVariable UUID id) {
+//        return service.getById(id);
+//    }
 }

@@ -28,18 +28,15 @@ public class BranchChurch {
     @Column(nullable = false, length = 50)
     private BranchType type;
 
-    private int totalMembership;
-
-//    @OneToMany(mappedBy = "branch")
-//    private List<Member> members;
-//
-
-
     public enum BranchType {
         HQ,
         LOCAL,
         MISSION
     }
+
+    //    @OneToMany(mappedBy = "branch")
+//    private List<Member> members;
+//
 
 }
 

@@ -3,9 +3,9 @@ package com.church.YPortal.entity;
 import jakarta.persistence.*;
 
 import java.util.UUID;
-
-@Entity
-@Table(name="employment")
+//
+//@Entity
+//@Table(name="employment")
 public class Employment {
 
 
@@ -22,3 +22,5 @@ public class Employment {
     @JoinColumn(name = "member_id")
     private Member member;
 }
+
+

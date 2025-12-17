@@ -18,53 +18,51 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class BranchChurchService {
-    private final BranchChurchRepository repository;
-    private final BranchChurchMapper mapper;
-
-
-
-
-
+//    private final BranchChurchRepository repository;
+//    private final BranchChurchMapper mapper;
+//
+//
+//
+////    public BranchResponse create(CreateBranchRequest request) {
+////        BranchChurch branch = new BranchChurch();
+////        branch.setName(request.getName());
+////        branch.setType(request.getType());
+////        branch.setTotalMembership(0);
+////
+////        return mapper.toResponse(repository.save(branch));
+////    }
+//
 //    public BranchResponse create(CreateBranchRequest request) {
-//        BranchChurch branch = new BranchChurch();
-//        branch.setName(request.getName());
-//        branch.setType(request.getType());
-//        branch.setTotalMembership(0);
+//        BranchChurch branch = mapper.toEntity(request);
+//        return mapper.toResponse(repository.save(branch));
+//    }
+//
+//    public List<BranchResponse> getAll() {
+//        return mapper.toResponseList(repository.findAll());
+//    }
+//
+//
+//    public BranchResponse getById(UUID id) {
+//        BranchChurch branch = repository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Branch not found"));
+//        return mapper.toResponse(branch);
+//    }
+//
+//    @Transactional
+//    public BranchResponse update(UUID id, UpdateBranchRequest request) {
+//        BranchChurch branch = repository.findById(id)
+//                .orElseThrow(() -> new EntityNotFoundException("Branch not found"));
+//
+//        mapper.updateEntity(request, branch);
 //
 //        return mapper.toResponse(repository.save(branch));
 //    }
-
-    public BranchResponse create(CreateBranchRequest request) {
-        BranchChurch branch = mapper.toEntity(request);
-        return mapper.toResponse(repository.save(branch));
-    }
-
-    public List<BranchResponse> getAll() {
-        return mapper.toResponseList(repository.findAll());
-    }
-
-
-    public BranchResponse getById(UUID id) {
-        BranchChurch branch = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Branch not found"));
-        return mapper.toResponse(branch);
-    }
-
-    @Transactional
-    public BranchResponse update(UUID id, UpdateBranchRequest request) {
-        BranchChurch branch = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Branch not found"));
-
-        mapper.updateEntity(request, branch);
-
-        return mapper.toResponse(repository.save(branch));
-    }
-
-    @Transactional
-    public void delete(UUID id) {
-        if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Branch not found");
-        }
-        repository.deleteById(id);
-    }
+//
+//    @Transactional
+//    public void delete(UUID id) {
+//        if (!repository.existsById(id)) {
+//            throw new EntityNotFoundException("Branch not found");
+//        }
+//        repository.deleteById(id);
+//    }
 }

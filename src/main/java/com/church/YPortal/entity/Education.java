@@ -12,14 +12,17 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     private Level level;
     private boolean currentlyInSchool;
     private String institutionName;
     private String course;
     private String specialization;
+
     @OneToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
 
     public enum Level {
         PRIMARY,

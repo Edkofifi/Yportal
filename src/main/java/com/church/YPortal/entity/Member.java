@@ -30,11 +30,11 @@ public class Member {
     @JoinColumn(name = "branch_id")
     private BranchChurch branch;
 
-    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
-    private Education education;
-
-    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
-    private Employment employment;
+//    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+//    private Education education;
+//
+//    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+//    private Employment employment;
 
 //    @ManyToMany
 //    @JoinTable(
