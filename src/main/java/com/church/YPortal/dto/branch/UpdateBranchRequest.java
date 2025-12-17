@@ -15,5 +15,4 @@ public class UpdateBranchRequest {
     @NotNull
     private BranchType type;
 
-    private int totalMembership;
 }

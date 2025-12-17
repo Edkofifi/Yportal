@@ -33,10 +33,5 @@ public class BranchChurch {
         LOCAL,
         MISSION
     }
-
-    //    @OneToMany(mappedBy = "branch")
-//    private List<Member> members;
-//
-
 }
 
