@@ -4,9 +4,7 @@ import com.church.YPortal.entity.BranchChurch;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Builder
-@Getter
-@Setter
+@Data
 public class CreateBranchRequest {
 
     @NotNull
