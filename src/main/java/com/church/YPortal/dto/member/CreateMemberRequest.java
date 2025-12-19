@@ -9,6 +9,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * CreateMemberRequest
@@ -30,7 +31,8 @@ public class CreateMemberRequest {
     private LocalDate dateOfBirth;
     private String phone;
     private String email;
-    private BranchChurch church;
+    private UUID churchId;
+
 
 
     /**

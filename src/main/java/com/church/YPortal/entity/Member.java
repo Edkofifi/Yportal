@@ -66,6 +66,5 @@ public class Member {
         SANITATION,
         SUNDAY_SCHOOL,
         MEDIA,
-
     }
 }

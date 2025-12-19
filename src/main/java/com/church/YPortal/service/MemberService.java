@@ -3,8 +3,10 @@ package com.church.YPortal.service;
 import com.church.YPortal.dto.member.CreateMemberRequest;
 import com.church.YPortal.dto.member.MemberResponse;
 import com.church.YPortal.dto.member.UpdateMemberRequest;
+import com.church.YPortal.entity.BranchChurch;
 import com.church.YPortal.entity.Member;
 import com.church.YPortal.mapper.MemberMapper;
+import com.church.YPortal.repository.BranchChurchRepository;
 import com.church.YPortal.repository.MemberRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -27,6 +29,7 @@ public class MemberService {
 
     // Repository handles database operations (CRUD)
     private final MemberRepository memberRepository;
+    private final BranchChurchRepository branchChurchRepository;
 
     // Mapper converts between Entity <-> DTOs
     private final MemberMapper mapper;
@@ -41,10 +44,17 @@ public class MemberService {
      */
     public MemberResponse create(CreateMemberRequest request) {
 
-        // Convert request DTO into entity
+        //Convert request DTO into Member entity (ignoring the church for now)
         Member member = mapper.toEntity(request);
 
-        // Save entity and convert to response DTO
+        //Fetch the BranchChurch entity using the provided churchId
+        BranchChurch church = branchChurchRepository.findById(request.getChurchId())
+                .orElseThrow(() -> new EntityNotFoundException("Branch not found"));
+
+        //Set the church on the Member entity by loading the church entity
+        member.setBranch(church);
+
+        //Save the Member entity and convert to response DTO
         return mapper.toResponse(
                 memberRepository.save(member)
         );
