@@ -73,7 +73,7 @@ public class MemberService {
 
         // Find member or throw error if not found
         Member member = memberRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Member not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Member not found"));
 
         // Convert entity to response DTO
         return mapper.toResponse(member);

@@ -4,6 +4,7 @@ package com.church.YPortal.dto.member;
 import com.church.YPortal.dto.address.CreateAddressRequest;
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.employment.CreateEmploymentRequest;
+import com.church.YPortal.entity.BranchChurch;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -27,6 +28,9 @@ public class CreateMemberRequest {
     private String lastName;
     private String gender;
     private LocalDate dateOfBirth;
+    private String phone;
+    private String email;
+    private BranchChurch church;
 
 
     /**
