@@ -31,7 +31,7 @@ public class Member {
     private String phone;
     private String email;
 
-    private boolean abroad; // true if living outside country
+    private boolean abroad;
     private String countryOfResidence;
 
     @ManyToOne
