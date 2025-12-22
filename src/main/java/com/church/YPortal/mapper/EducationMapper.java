@@ -2,9 +2,13 @@ package com.church.YPortal.mapper;
 
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
+import com.church.YPortal.dto.member.MemberResponse;
 import com.church.YPortal.entity.Education;
+import com.church.YPortal.entity.Member;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface EducationMapper {
@@ -27,5 +31,12 @@ public interface EducationMapper {
      * Used when returning member education details to the client.
      */
     EducationResponse toResponse(Education education);
+
+    /**
+     * Converts a list of Education entities into
+     * a list of MemberResponse DTOs.
+     */
+    List<EducationResponse> toResponseList(List<Education> educations);
+
 }
 

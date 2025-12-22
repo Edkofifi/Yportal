@@ -32,6 +32,7 @@ public class MemberService {
     private final BranchChurchRepository branchChurchRepository;
 
     // Mapper converts between Entity <-> DTOs
+
     private final MemberMapper mapper;
 
     /**

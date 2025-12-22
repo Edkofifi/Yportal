@@ -11,6 +11,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EducationService {
@@ -41,6 +43,16 @@ public class EducationService {
         return educationMapper.toResponse(
                 educationRepository.save(education)
         );
+
+    }
+    /**
+     * Fetches all educations from the database.
+     *
+     * @return list of EducationResponse DTOs
+     */
+    public List<EducationResponse> getAll(){
+        return  educationMapper.toResponseList(
+                educationRepository.findAll());
 
     }
 }

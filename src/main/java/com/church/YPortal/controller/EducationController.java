@@ -2,16 +2,15 @@ package com.church.YPortal.controller;
 
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
+import com.church.YPortal.dto.member.MemberResponse;
 import com.church.YPortal.service.EducationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 /**
@@ -45,7 +44,6 @@ public class EducationController {
 
 
 
-
     /**
      * Add a new education to member
      */
@@ -55,5 +53,16 @@ public class EducationController {
             ) {
         EducationResponse response = educationService.createEducation(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+
+    /**
+     * Get all education
+     */
+    @GetMapping
+    public ResponseEntity<List<EducationResponse>> getAll() {
+        return ResponseEntity.ok(
+                educationService.getAll()
+        );
     }
 }
