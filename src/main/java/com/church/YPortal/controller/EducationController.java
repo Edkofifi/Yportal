@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -65,4 +66,17 @@ public class EducationController {
                 educationService.getAll()
         );
     }
+
+    /**
+     * Get a single education by ID
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<EducationResponse> getEducationById(
+            @PathVariable UUID id
+    ){
+        return ResponseEntity.ok(
+                educationService.getEducationById(id)
+        );
+    }
+
 }

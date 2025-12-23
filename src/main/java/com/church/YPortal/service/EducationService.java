@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -54,5 +55,19 @@ public class EducationService {
         return  educationMapper.toResponseList(
                 educationRepository.findAll());
 
+    }
+
+
+    /**
+     * Fetches a single education by ID.
+     *
+     * @param id UUID of that education
+     * @throws EntityNotFoundException if education is not found
+     */
+    public EducationResponse getEducationById(UUID id){
+        Education education = educationRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Education not found"));
+
+        return educationMapper.toResponse(education);
     }
 }
