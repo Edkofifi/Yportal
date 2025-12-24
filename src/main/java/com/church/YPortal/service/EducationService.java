@@ -70,4 +70,19 @@ public class EducationService {
 
         return educationMapper.toResponse(education);
     }
+
+
+    /**
+     * Deletes a education by ID.
+     *
+     * @throws EntityNotFoundException if education does not exist
+     */
+
+    public void deleteEducation(UUID id){
+
+        Education education = educationRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Education not found"));
+
+        educationRepository.deleteById(id);
+    }
 }

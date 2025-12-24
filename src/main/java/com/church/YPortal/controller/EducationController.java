@@ -79,4 +79,15 @@ public class EducationController {
         );
     }
 
+
+    /**
+     * Delete education by ID
+     */
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteEducation(
+            @PathVariable UUID id
+    ){
+        educationService.deleteEducation(id);
+    }
 }
