@@ -2,7 +2,9 @@ package com.church.YPortal.controller;
 
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
+import com.church.YPortal.dto.education.UpdateEducationRequest;
 import com.church.YPortal.dto.member.MemberResponse;
+import com.church.YPortal.dto.member.UpdateMemberRequest;
 import com.church.YPortal.service.EducationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -89,5 +91,18 @@ public class EducationController {
             @PathVariable UUID id
     ){
         educationService.deleteEducation(id);
+    }
+
+    /**
+     * Update an existing education
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<EducationResponse> update(
+            @PathVariable UUID id,
+            @Valid @RequestBody UpdateEducationRequest request
+    ) {
+        return ResponseEntity.ok(
+                educationService.updateEducation(id, request)
+        );
     }
 }

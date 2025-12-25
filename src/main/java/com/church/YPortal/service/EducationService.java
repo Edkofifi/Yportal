@@ -2,13 +2,16 @@ package com.church.YPortal.service;
 
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
+import com.church.YPortal.dto.education.UpdateEducationRequest;
 import com.church.YPortal.entity.Education;
 import com.church.YPortal.entity.Member;
 import com.church.YPortal.mapper.EducationMapper;
 import com.church.YPortal.repository.EducationRepository;
 import com.church.YPortal.repository.MemberRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.sql.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,5 +87,28 @@ public class EducationService {
                 .orElseThrow(() -> new EntityNotFoundException("Education not found"));
 
         educationRepository.deleteById(id);
+    }
+
+
+
+    /**
+     * Updates an existing education.
+     * - Only non-null fields from UpdateEducationRequest will be updated
+     * - This is handled by MapStruct in the mapper
+     */
+    @Transactional
+    public EducationResponse updateEducation(
+            UUID id,
+            UpdateEducationRequest request
+    ){
+        Education education = educationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Education not found"));
+
+        // Update entity fields using mapper (null values are ignored)
+        educationMapper.updateEntity(request, education);
+
+        // Save updated entity and return response
+        return educationMapper.toResponse(educationRepository.save(education));
+
     }
 }

@@ -2,11 +2,12 @@ package com.church.YPortal.mapper;
 
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
+import com.church.YPortal.dto.education.UpdateEducationRequest;
 import com.church.YPortal.dto.member.MemberResponse;
+import com.church.YPortal.dto.member.UpdateMemberRequest;
 import com.church.YPortal.entity.Education;
 import com.church.YPortal.entity.Member;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -38,5 +39,23 @@ public interface EducationMapper {
      */
     List<EducationResponse> toResponseList(List<Education> educations);
 
+    /**
+     * Updates an existing Education entity using UpdateEducationRequest.
+     *
+     * KEY BEHAVIOR:
+     * - Null values from the request are ignored
+     * - Only provided fields are updated
+     * - Nested collections are ignored and handled separately
+     *
+     * @MappingTarget tells MapStruct to update
+     * the existing entity instead of creating a new one.
+     */
+    @BeanMapping(
+            nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    )
+    void updateEntity(
+            UpdateEducationRequest request,
+            @MappingTarget Education education
+    );
 }
 
