@@ -3,10 +3,7 @@ package com.church.YPortal.mapper;
 import com.church.YPortal.dto.education.CreateEducationRequest;
 import com.church.YPortal.dto.education.EducationResponse;
 import com.church.YPortal.dto.education.UpdateEducationRequest;
-import com.church.YPortal.dto.member.MemberResponse;
-import com.church.YPortal.dto.member.UpdateMemberRequest;
 import com.church.YPortal.entity.Education;
-import com.church.YPortal.entity.Member;
 import org.mapstruct.*;
 
 import java.util.List;
