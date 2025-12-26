@@ -9,6 +9,8 @@ import com.church.YPortal.entity.YouthExecutive;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring")
 public interface YouthExecutiveMapper {
@@ -34,5 +36,12 @@ public interface YouthExecutiveMapper {
      * Used when returning youth executive details to the client.
      */
     ExecutiveResponse toResponse(YouthExecutive youthExecutive);
+
+
+    /**
+     * Converts a list of executive entities into
+     * a list of ExecutiveResponse DTOs.
+     */
+    List<ExecutiveResponse> toResponseList(List<YouthExecutive> youthExecutive);
 
 }

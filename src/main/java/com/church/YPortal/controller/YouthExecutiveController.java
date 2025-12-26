@@ -8,10 +8,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/youth-executives")
@@ -26,4 +26,29 @@ public class YouthExecutiveController {
         ExecutiveResponse executiveResponse = youthExecutiveService.createYouthExecutive(createExecutiveRequest);
         return new ResponseEntity<>(executiveResponse, HttpStatus.CREATED);
     }
+
+
+
+    /**
+     * Get all executives
+     */
+    @GetMapping
+    public ResponseEntity<List<ExecutiveResponse>> getAllYouthExecutives(){
+        return ResponseEntity.ok(
+                youthExecutiveService.getAllExecutives()
+        );
+    }
+
+    /**
+     * delete an executive
+     */
+    @DeleteMapping("/{id}")
+    public void deleteYouthExecutive(
+            @PathVariable UUID id){
+        youthExecutiveService.deleteYouthExecutive(id);
+    }
+
+
+
+
 }
