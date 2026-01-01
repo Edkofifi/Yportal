@@ -13,7 +13,6 @@ import java.util.UUID;
 @Table(name = "users")
 @Getter
 @Setter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class User {
 
@@ -25,7 +24,7 @@ public class User {
         private String email;
 
         @Column(nullable = false)
-        private String password;   // will hash it later
+        private String password;   // will hash it
 
         @Enumerated(EnumType.STRING)
         private Role role;
