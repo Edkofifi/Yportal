@@ -22,12 +22,19 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 // Allow all requests (for now)
+//                .authorizeHttpRequests(auth -> auth
+//                        .anyRequest().permitAll()
+//                )
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().authenticated()
                 )
 
                 // Enable HTTP Basic authentication
-                .httpBasic(Customizer.withDefaults());
+              // authentication authentication.httpBasic(Customizer.withDefaults());
+
+            // Disable httpBasic
+                .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
         }
