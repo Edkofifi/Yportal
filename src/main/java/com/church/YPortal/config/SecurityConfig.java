@@ -32,9 +32,7 @@ public class SecurityConfig {
 
                 // Enable HTTP Basic authentication
               // authentication authentication.httpBasic(Customizer.withDefaults());
-
-            // Disable httpBasic
-                .httpBasic(httpBasic -> httpBasic.disable());
+                .httpBasic(Customizer.withDefaults());
 
         return http.build();
         }
